@@ -26,25 +26,8 @@ env/
 # --- NOTEBOOKS ---
 .ipynb_checkpoints/
 
-# --- DATA ---
-*.csv
-*.tsv
-*.xls
-*.xlsx
-*.parquet
-*.pkl
-*.pickle
-
-data/
-datasets/
-raw_data/
-processed_data/
-
-# --- MODELAGEM ---
-*.h5
-*.hdf5
-*.joblib
-*.model
-
 # --- VS CODE ---
 .vscode/
+
+# --- NÃO VERSIONAR ---
+webapp/
