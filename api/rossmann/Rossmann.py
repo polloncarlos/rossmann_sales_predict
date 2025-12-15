@@ -6,7 +6,7 @@ from datetime import datetime, timedelta
 
 class Rossmann(object):
     def __init__(self):
-        self.home_path = '/mnt/c/Users/carlo/OneDrive/repos/ds_producao/'
+        self.home_path = ''
         # scalers carregados do disco
         self.competition_distance_scaler = pickle.load(open(self.home_path + 'parameter/competition_distance_scaler.pkl', 'rb'))
         self.competition_time_month_scaler = pickle.load(open(self.home_path + 'parameter/competition_time_month_scaler.pkl', 'rb'))
@@ -108,8 +108,12 @@ class Rossmann(object):
         df5['month_cos'] = np.cos(df5['month'] * 2. * np.pi/12)
         df5['day_sin'] = np.sin(df5['day'] * 2. * np.pi/30)
         df5['day_cos'] = np.cos(df5['day'] * 2. * np.pi/30)
-        df5['week_of_year_sin'] = np.sin(df5['week_of_year'] * 2. * np.pi/52)
-        df5['week_of_year_cos'] = np.cos(df5['week_of_year'] * 2. * np.pi/52)
+        df5['week_of_year_sin'] = df5['week_of_year'].apply(lambda x: np.sin(x * (2 * np.pi / 52))).astype('float64')
+        df5['week_of_year_cos'] = df5['week_of_year'].apply(lambda x: np.cos(x * (2 * np.pi / 52))).astype('float64')
+        
+        # Garantir que tudo seja numérico
+        df5 = df5.apply(pd.to_numeric, errors='coerce')
+
 
         cols_selected = [
             'store','promo','school_holiday','store_type','assortment',
@@ -121,13 +125,9 @@ class Rossmann(object):
 
         return df5[cols_selected]
 
-    def get_prediction(self, model, original_data, test_data):
-        
-        df = original_data.copy()
-        
-        # Model prediction
-        pred = model.predict(test_data)
-        
-        # Convert from log space and ensure Python float
-        df['prediction'] = np.expm1(pred).astype(float)
-        return df.to_json(orient='records', date_format='iso')
+    def get_prediction( self, model, original_data, test_data ):
+        # prediction
+        pred = model.predict( test_data )
+        # join pred into the original data
+        original_data['prediction'] = np.expm1( pred )
+        return original_data.to_json( orient='records', date_format='iso' )
