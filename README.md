@@ -6,7 +6,7 @@
 <strong>Previsão de vendas para 1.115 lojas da Rossmann (horizonte de 6 semanas)</strong>, 
 desenvolvida a partir de um pipeline completo de Ciência de Dados baseado no 
 <strong>CRISP-DM</strong>, com foco em <em>valor de negócio</em>, <em>tomada de decisão executiva</em> 
-e <em>deploy em produção</em>.
+e <em>deploy</em>.
 </p>
 
 <hr/>
@@ -132,7 +132,7 @@ e menor risco de erros extremos, o que é fundamental para decisões financeiras
 <p>
 Apesar de uma leve perda de performance em relação à v2, a versão final foi escolhida 
 por garantir <strong>estabilidade, menor consumo de memória e viabilidade de deploy</strong> 
-em ambiente real de produção.
+no plano gratuito do Render (512 MB).
 </p>
 
 <hr/>
@@ -188,7 +188,7 @@ a ciclos de pagamento da população. Esse padrão pode orientar decisões de es
 
 <hr/>
 
-<h2>🚀 Produto de Dados em Produção</h2>
+<h2>🚀 Produto de Dados (deploy)</h2>
 <ul>
   <li>API Flask para previsões de vendas</li>
   <li>Bot Telegram para interação em tempo real</li>
@@ -258,7 +258,7 @@ transformando previsões estatísticas em <strong>informação acionável</stron
 <h2>📌 Conclusão</h2>
 <p>
 Este projeto representa a construção de uma solução completa de Ciência de Dados,
-indo da compreensão do problema de negócio até a entrega de um produto funcional em produção.
+indo da compreensão do problema de negócio até a entrega de um produto funcional publicado.
 Ao longo do processo, foram aplicadas boas práticas de análise, modelagem e deploy,
 sempre com foco em gerar valor real para o negócio.
 </p>
@@ -266,5 +266,5 @@ sempre com foco em gerar valor real para o negócio.
 <p>
 O trabalho demonstra capacidade de estruturar problemas, tomar decisões técnicas conscientes
 (dados, modelo e infraestrutura) e transformar análises em informações acionáveis,
-mesmo sob restrições comuns a ambientes reais de produção.
+mesmo sob restrição real de infraestrutura (512 MB).
 </p>
