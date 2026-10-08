@@ -101,20 +101,31 @@ e menor risco de erros extremos, o que é fundamental para decisões financeiras
 <table border="1" cellpadding="6">
   <tr>
     <th>Versão</th>
-    <th>Features</th>
+    <th>Modelo</th>
+    <th>Seleção de features</th>
     <th>Tuning</th>
     <th>RMSE</th>
     <th>Observação</th>
   </tr>
   <tr>
+    <td>Baseline</td>
+    <td>Média (Average Model)</td>
+    <td>-</td>
+    <td>-</td>
+    <td>1835</td>
+    <td>Referência: prevê a média de vendas</td>
+  </tr>
+  <tr>
     <td>v1</td>
+    <td>XGBoost</td>
     <td>Boruta + RandomForest</td>
     <td>Random Search</td>
     <td>1120</td>
-    <td>Baseline inicial</td>
+    <td>Primeira versão do XGBoost</td>
   </tr>
   <tr>
     <td>v2</td>
+    <td>XGBoost</td>
     <td>Boruta + ExtraTrees</td>
     <td>Optuna</td>
     <td>895</td>
@@ -122,12 +133,19 @@ e menor risco de erros extremos, o que é fundamental para decisões financeiras
   </tr>
   <tr>
     <td>v3</td>
+    <td>XGBoost</td>
     <td>Reutilização das features</td>
     <td>Optuna</td>
     <td>912</td>
     <td>Versão final compatível com Render (512MB)</td>
   </tr>
 </table>
+
+<p>
+Em todas as versões o modelo de previsão é o XGBoost. RandomForest e ExtraTrees aparecem só
+como estimadores internos do Boruta, na etapa de seleção de features. Contra o baseline pela
+média (RMSE 1.835), a versão final reduz o erro em 50% (MAPE de 9,2%).
+</p>
 
 <p>
 Apesar de uma leve perda de performance em relação à v2, a versão final foi escolhida 
